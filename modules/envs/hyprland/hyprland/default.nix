@@ -1,0 +1,108 @@
+{
+  inputs,
+  ...
+}:
+{
+  flake.modules = {
+    nixos.hyprland = 
+    { pkgs, ... }:
+    {
+      # screenshots
+      environment.systemPackages = with pkgs; [ sway-contrib.grimshot ];
+
+      programs.hyprland = {
+        enable = true;
+        withUWSM = true;
+        package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+        portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+      };
+    };
+
+    homeManager.hyprland = {
+      wayland.windowManager.hyprland = {
+        enable = true;
+        systemd.enable = false;
+        settings = {
+          #==================================================
+          # MONITORS
+          #==================================================
+          monitor = "eDP-1, preferred, auto, 1";
+
+          #==================================================
+          # GENERAL
+          #==================================================
+          general = {
+          gaps_in = 4;
+          gaps_out = 8;
+          border_size = 0;
+          # "col.active_border" = "rgba(ffffffee)";
+          # "col.inactive_border" = "rgba(595959aa)";
+          resize_on_border = false;
+          allow_tearing = false;
+          layout = "dwindle";
+          };
+
+          #==================================================
+          # DECORATION
+          #==================================================
+          decoration = {
+            rounding = 8;
+            rounding_power = 2;
+
+            active_opacity = 0.9;
+            inactive_opacity = 0.9;
+
+            shadow = {
+                enabled = false;
+            };
+
+            blur = {
+                enabled = true;
+            };
+          };
+          #==================================================
+          # INPUTS
+          #==================================================
+          input = {
+          kb_layout = "us, cz, ru, ua";
+          kb_variant = ", qwerty, legacy, winkeys";
+          kb_options = "grp:win_space_toggle";
+
+          follow_mouse = 1;
+          sensitivity = 0; 
+          touchpad = {
+              disable_while_typing = false;
+              natural_scroll = true;
+          };
+          };
+
+          #==================================================
+          # GESTURES
+          #==================================================
+          # gestures = {
+          #   workspace_swipe = true;
+          #   workspace_swipe_invert = false;
+          #   workspace_swipe_forever	= true;
+          # };
+
+          #==================================================
+          # OTHER
+          #==================================================
+          dwindle = {
+            pseudotile = true;
+            preserve_split = true;
+          };
+
+          master = {
+            new_status = "master";
+          };
+
+          misc = {
+            force_default_wallpaper = 0;
+            disable_hyprland_logo = true;
+          };
+        };
+      };
+    };
+  };
+}
