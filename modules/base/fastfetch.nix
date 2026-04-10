@@ -25,6 +25,7 @@
       enable = true;
       settings = {
         logo = {
+          type = "data-raw";
           source = myLogo;
           padding = {
           top = 2;
@@ -33,7 +34,6 @@
           };
         };
         modules = [  
-          "break"
           {
             type = "custom";
             format = "┌──────────────────────Hardware──────────────────────┐";
@@ -61,7 +61,7 @@
           }
           {
             type = "disk";
-            key = "└ └";
+            key = "│ └";
             keyColor = "green";
           }
           {
@@ -90,13 +90,18 @@
           }
           {
             type = "shell";
-            key = "└ └";
+            key = "│ └";
             keyColor = "yellow";
           }
-          "break"
+          
           {
             type = "de";
             key = " DE";
+            keyColor = "blue";
+          }
+          {
+            type = "wm";
+            key = " WM";
             keyColor = "blue";
           }
           {
@@ -116,7 +121,7 @@
           }
           {
             type = "gpu";
-            key = "└ └󰍛";
+            key = "│ └󰍛";
             format = "{3}";
             keyColor = "blue";
           }
