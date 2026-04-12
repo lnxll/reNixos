@@ -9,15 +9,17 @@
       "noctalia-shell"
     ];
 
+    stylix.targets.noctalia-shell.enable = false;
+
     programs.noctalia-shell = {
       enable = true;
       settings = lib.mkForce {
         settingsVersion = 0;
         bar = {
-          barType = "framed";
-          position = "top";
+          barType = "floating";
+          position = "left";
           monitors = [ ];
-          density = "default";
+          density = "comfortable";
           showOutline = false;
           showCapsule = true;
           capsuleOpacity = 1;
@@ -29,8 +31,8 @@
           backgroundOpacity = 0.93;
           useSeparateOpacity = false;
           floating = false;
-          marginVertical = 4;
-          marginHorizontal = 4;
+          marginVertical = 8;
+          marginHorizontal = 8;
           frameThickness = 8;
           frameRadius = 12;
           outerCorners = true;
@@ -64,6 +66,21 @@
             ];
             right = [
               {
+                hideMode = "alwaysExpanded";
+                icon = "rotate-rectangle";
+                id = "CustomButton";
+                leftClickExec = "pgrep iio-hyprland >/dev/null && pkill iio-hyprland || iio-hyprland &";
+                middleClickExec = "pgrep iio-hyprland >/dev/null && pkill iio-hyprland || iio-hyprland &";
+                rightClickExec = "pgrep iio-hyprland >/dev/null && pkill iio-hyprland || iio-hyprland &";
+                showIcon = true;
+                showExecTooltip = false;
+                generalTooltipText = "screen rotation";
+                textCommand = ''
+                pgrep iio-hyprland >/dev/null && echo "on" || echo "off"
+                '';
+            
+              }
+              {
                 id = "Tray";
               }
               {
@@ -95,7 +112,7 @@
           screenOverrides = [ ];
         };
         general = {
-          avatarImage = "";
+          avatarImage = "/home/lnxll/reNixos/avatar.jpg";
           dimmerOpacity = 0.2;
           showScreenCorners = false;
           forceBlackScreenCorners = false;
@@ -172,7 +189,7 @@
           settingsPanelSideBarCardStyle = false;
         };
         location = {
-          name = "Prague";
+          name = "Brno";
           weatherEnabled = true;
           weatherShowEffects = true;
           useFahrenheit = false;
@@ -360,35 +377,6 @@
           disableWallpaper = true;
           disableDesktopWidgets = true;
         };
-        dock = {
-          enabled = true;
-          position = "bottom";
-          displayMode = "auto_hide";
-          dockType = "floating";
-          backgroundOpacity = 1;
-          floatingRatio = 1;
-          size = 1;
-          onlySameOutput = true;
-          monitors = [ ];
-          pinnedApps = [ ];
-          colorizeIcons = false;
-          showLauncherIcon = false;
-          launcherPosition = "end";
-          launcherIconColor = "none";
-          pinnedStatic = false;
-          inactiveIndicators = false;
-          groupApps = false;
-          groupContextMenuMode = "extended";
-          groupClickAction = "cycle";
-          groupIndicatorStyle = "dots";
-          deadOpacity = 0.6;
-          animationSpeed = 1;
-          sitOnFrame = false;
-          showDockIndicator = false;
-          indicatorThickness = 3;
-          indicatorColor = "primary";
-          indicatorOpacity = 0.6;
-        };
         network = {
           wifiEnabled = true;
           airplaneModeEnabled = false;
@@ -508,7 +496,7 @@
           backlightDeviceMappings = [ ];
         };
         colorSchemes = {
-          useWallpaperColors = false;
+          useWallpaperColors = true;
           predefinedScheme = "Noctalia (default)";
           darkMode = true;
           schedulingMode = "off";
@@ -532,28 +520,19 @@
         };
         hooks = {
           enabled = false;
-          wallpaperChange = "";
-          darkModeChange = "";
-          screenLock = "";
-          screenUnlock = "";
-          performanceModeEnabled = "";
-          performanceModeDisabled = "";
-          startup = "";
-          session = "";
-          colorGeneration = "";
         };
         plugins = {
           autoUpdate = false;
           notifyUpdates = true;
         };
         idle = {
-          enabled = false;
-          screenOffTimeout = 600;
-          lockTimeout = 660;
+          enabled = true;
+          screenOffTimeout = 300;
+          lockTimeout = 300;
           suspendTimeout = 1800;
           fadeDuration = 5;
           screenOffCommand = "";
-          lockCommand = "";
+          lockCommand = "noctalia-shell ipc call lockScreen lock";
           suspendCommand = "";
           resumeScreenOffCommand = "";
           resumeLockCommand = "";
@@ -562,10 +541,6 @@
         };
         desktopWidgets = {
           enabled = false;
-          overviewEnabled = true;
-          gridSnap = false;
-          gridSnapScale = false;
-          monitorWidgets = [ ];
         };
       };
     };

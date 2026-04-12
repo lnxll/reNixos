@@ -17,6 +17,9 @@
         "$mainMod, W, exec, noctalia-shell ipc call wallpaper random all"
         "$mainMod SHIFT, W, exec, noctalia-shell ipc call wallpaper toggle"
 
+        # screen rotation on/off
+        "$mainMod SHIFT, R, exec, pgrep iio-hyprland >/dev/null && pkill iio-hyprland || iio-hyprland &"
+
         # screenshot
         "$mainMod SHIFT, S, exec, grimshot copy area"
         "$mainMod CTRL, S, exec, grimshot copy screen"

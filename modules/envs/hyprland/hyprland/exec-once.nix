@@ -1,6 +1,7 @@
 {
   flake.modules.homeManager.hyprland = {
     wayland.windowManager.hyprland.settings.exec-once = [
+      "iio-hyprland"
       "wl-paste --type text --watch cliphist store"
       "wl-paste --type image --watch cliphist store"
     ];

@@ -46,7 +46,7 @@
           # DECORATION
           #==================================================
           decoration = {
-            rounding = 8;
+            rounding = 12;
             rounding_power = 2;
 
             active_opacity = 0.9;
