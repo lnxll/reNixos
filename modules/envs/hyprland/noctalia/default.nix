@@ -542,6 +542,9 @@
         desktopWidgets = {
           enabled = false;
         };
+        dock = {
+          enable = false;  
+        };
       };
     };
   };
