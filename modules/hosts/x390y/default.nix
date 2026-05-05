@@ -25,8 +25,9 @@ let
     "messaging"
     "vscodium"
     "firefox"
-    # "zen-browser"
+    "zen-browser"
     "obsidian"
+    "printing"
 
     ### tool
     "android"
@@ -40,8 +41,16 @@ in
       { pkgs, ... }: {
         imports = (config.flake.lib.loadModulesForUser config modules);
 
-        # autorotation [todo]
-        environment.systemPackages = with pkgs; [ iio-sensor-proxy jq ];
+        environment.systemPackages = with pkgs; [ 
+          # autorotation [todo]
+          iio-sensor-proxy jq 
+          
+          # android [todo]
+          gvfs
+          jmtpfs
+          simple-mtpfs
+          mtpfs
+          ];
         hardware.sensor.iio.enable = true;
         programs.iio-hyprland.enable = true;
         

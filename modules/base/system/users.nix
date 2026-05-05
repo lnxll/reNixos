@@ -22,6 +22,7 @@
             "storage"
             "kvm"
             "adbusers"
+            "docker"
           ];
         };
       };

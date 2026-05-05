@@ -11,13 +11,15 @@
 
     stylix.targets.noctalia-shell.enable = false;
 
+    # get all settings
+    #> noctalia-shell ipc call state all > ./settings.json 
     programs.noctalia-shell = {
       enable = true;
       settings = lib.mkForce {
         settingsVersion = 0;
         bar = {
           barType = "floating";
-          position = "left";
+          position = "top";
           monitors = [ ];
           density = "comfortable";
           showOutline = false;
@@ -30,7 +32,7 @@
           enableExclusionZoneInset = true;
           backgroundOpacity = 0.93;
           useSeparateOpacity = false;
-          floating = false;
+          floating = true;
           marginVertical = 8;
           marginHorizontal = 8;
           frameThickness = 8;
@@ -88,6 +90,8 @@
               }
               {
                 id = "Battery";
+                showNoctaliaPerformance = true;
+
               }
               {
                 id = "Volume";

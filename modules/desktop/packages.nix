@@ -13,6 +13,8 @@
       # digikam               # for photographics
       # youtube-music         # YT MUSIC
       qemu
+      brightnessctl
+      kicad
     ];
   };
 }
